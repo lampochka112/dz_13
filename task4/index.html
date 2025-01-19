@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка високосного года</title>
+</head>
+<body>
+    <h1>Проверка високосного года</h1>
+    <button onclick="checkLeapYear()">Проверить год</button>
+    <p id="result"></p>
+
+    <script>
+        function checkLeapYear() {
+            const year = prompt("Введите год:");
+            const yearNumber = parseInt(year);
+
+            if (isNaN(yearNumber)) {
+                document.getElementById("result").innerText = "Пожалуйста, введите корректное число.";
+                return;
+            }
+
+            const isLeap = (yearNumber % 400 === 0) || (yearNumber % 4 === 0 && yearNumber % 100 !== 0);
+            if (isLeap) {
+                document.getElementById("result").innerText = yearNumber + " год является високосным.";
+            } else {
+                document.getElementById("result").innerText = yearNumber + " год не является високосным.";
+            }
+        }
+    </script>
+</body>
+</html>
