@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка трехзначного числа</title>
+</head>
+<body>
+    <h1>Проверка трехзначного числа на одинаковые цифры</h1>
+    <button onclick="checkNumber()">Введите число</button>
+    <p id="result"></p>
+
+    <script>
+        function checkNumber() {
+            let number = prompt("Введите трехзначное число:");
+            // Проверка, является ли введенное число трехзначным
+            if (number.length === 3 && !isNaN(number)) {
+                // Проверка на одинаковые цифры
+                let digits = number.split('');
+                let hasDuplicates = new Set(digits).size !== digits.length;
+
+                if (hasDuplicates) {
+                    document.getElementById("result").innerText = "В числе есть одинаковые цифры.";
+                } else {
+                    document.getElementById("result").innerText = "В числе нет одинаковых цифр.";
+                }
+            } else {
+                alert("Пожалуйста, введите корректное трехзначное число.");
+            }
+        }
+    </script>
+</body>
+</html>
