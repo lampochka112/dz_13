@@ -3,42 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Конвертер валют</title>
+    <title>Цифра в название</title>
 </head>
 <body>
-    <h1>Конвертер валют</h1>
-    <label for="amount">Введите сумму в USD:</label>
-    <input type="number" id="amount" placeholder="Сумма в USD" required>
-    
-    <label for="currency">Выберите валюту:</label>
-    <select id="currency">
-        <option value="EUR">EUR</option>
-        <option value="UAN">UAN</option>
-        <option value="AZN">AZN</option>
-    </select>
-    
-    <button onclick="convertCurrency()">Конвертировать</button>
-    
-    <h2 id="result"></h2>
+    <h1>Введите цифру от 0 до 9</h1>
+    <input type="text" id="numberInput" />
+    <button onclick="convertNumber()">Преобразовать</button>
+    <p id="result"></p>
 
     <script>
-        function convertCurrency() {
-            const amount = parseFloat(document.getElementById('amount').value);
-            const currency = document.getElementById('currency').value;
-            let convertedAmount;
-
-            // Установите курсы валют
-            const rates = {
-                EUR: 0.85, // Примерный курс USD к EUR
-                UAN: 27.0, // Примерный курс USD к UAN
-                AZN: 1.7   // Примерный курс USD к AZN
+        function convertNumber() {
+            const numberNames = {
+                0: 'ноль',
+                1: 'единица',
+                2: 'двойка',
+                3: 'тройка',
+                4: 'четверка',
+                5: 'пятерка',
+                6: 'шестёрка',
+                7: 'семёрка',
+                8: 'восьмёрка',
+                9: 'девятка'
             };
 
-            if (currency in rates) {
-                convertedAmount = (amount * rates[currency]).toFixed(2);
-                document.getElementById('result').innerText = `Сумма в ${currency}: ${convertedAmount}`;
+            const input = document.getElementById('numberInput').value;
+            const number = parseInt(input);
+
+            if (!isNaN(number) && number >= 0 && number <= 9) {
+                document.getElementById('result').innerText = numberNames[number];
             } else {
-                document.getElementById('result').innerText = 'Выберите корректную валюту.';
+                document.getElementById('result').innerText = 'не цифра';
             }
         }
     </script>
