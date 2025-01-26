@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Викторина</title>
+</head>
+<body>
+    <h1>Викторина</h1>
+    <form id="quizForm">
+        <div>
+            <p>1. Какой язык используется для веб-разработки?</p>
+            <label><input type="radio" name="q1" value="1"> Python</label><br>
+            <label><input type="radio" name="q1" value="2"> JavaScript</label><br>
+            <label><input type="radio" name="q1" value="3"> C++</label><br>
+        </div>
+        <div>
+            <p>2. Какой из этих браузеров является самым популярным?</p>
+            <label><input type="radio" name="q2" value="1"> Internet Explorer</label><br>
+            <label><input type="radio" name="q2" value="2"> Chrome</label><br>
+            <label><input type="radio" name="q2" value="3"> Safari</label><br>
+        </div>
+        <div>
+            <p>3. Что такое CSS?</p>
+            <label><input type="radio" name="q3" value="1"> Язык программирования</label><br>
+            <label><input type="radio" name="q3" value="2"> Язык разметки</label><br>
+            <label><input type="radio" name="q3" value="3"> Язык стилей</label><br>
+        </div>
+        <button type="button" onclick="calculateScore()">Проверить ответы</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function calculateScore() {
+            let score = 0;
+            const answers = [2, 2, 3]; // правильные ответы
+
+            for (let i = 0; i < answers.length; i++) {
+                const question = document.querySelector(`input[name="q${i + 1}"]:checked`);
+                if (question && parseInt(question.value) === answers[i]) {
+                    score += 2; // начисляем 2 балла за правильный ответ
+                }
+            }
+
+            document.getElementById("result").innerText = `Вы набрали ${score} баллов.`;
+        }
+    </script>
+</body>
+</html>
