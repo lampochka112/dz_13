@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка окружности в квадрате</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Проверка окружности в квадрате</h1>
+    <label for="circumference">Введите длину окружности:</label>
+    <input type="number" id="circumference" required>
+    <br>
+    <label for="perimeter">Введите периметр квадрата:</label>
+    <input type="number" id="perimeter" required>
+    <br>
+    <button onclick="checkCircleInSquare()">Проверить</button>
+    <p id="result"></p>
+
+    <script>
+        function checkCircleInSquare() {
+            const circumference = parseFloat(document.getElementById('circumference').value);
+            const perimeter = parseFloat(document.getElementById('perimeter').value);
+
+            // Вычисляем радиус окружности
+            const radius = circumference / (2 * Math.PI);
+            // Вычисляем сторону квадрата
+            const side = perimeter / 4;
+
+            // Проверяем, может ли окружность поместиться в квадрат
+            const canFit = radius <= side / 2;
+
+            // Выводим результат
+            document.getElementById('result').innerText = canFit ? 
+                "Окружность может поместиться в квадрат." : 
+                "Окружность не может поместиться в квадрат.";
+        }
+    </script>
+</body>
+</html>
