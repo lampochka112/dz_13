@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Делители числа</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Найдите делители числа</h1>
+    <input type="number" id="numberInput" placeholder="Введите число" />
+    <button onclick="findDivisors()">Найти делители</button>
+    
+    <div id="result"></div>
+
+    <script>
+        function findDivisors() {
+            const number = parseInt(document.getElementById('numberInput').value);
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = ''; // Очищаем предыдущие результаты
+
+            if (isNaN(number) || number <= 0) {
+                resultDiv.innerHTML = 'Пожалуйста, введите положительное целое число.';
+                return;
+            }
+
+            let divisors = [];
+            for (let i = 1; i <= number; i++) {
+                if (number % i === 0) {
+                    divisors.push(i);
+                }
+            }
+
+            resultDiv.innerHTML = `Делители числа ${number}: ${divisors.join(', ')}`;
+        }
+    </script>
+</body>
+</html>
