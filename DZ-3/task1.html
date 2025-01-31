@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сумма чисел в диапазоне</title>
+</head>
+<body>
+    <h1>Подсчет суммы чисел в диапазоне</h1>
+    <label for="start">Начало диапазона:</label>
+    <input type="number" id="start" required>
+    <br>
+    <label for="end">Конец диапазона:</label>
+    <input type="number" id="end" required>
+    <br>
+    <button onclick="calculateSum()">Подсчитать сумму</button>
+    <h2 id="result"></h2>
+
+    <script>
+        function calculateSum() {
+            const start = parseInt(document.getElementById('start').value);
+            const end = parseInt(document.getElementById('end').value);
+            let sum = 0;
+
+            // Проверка, что начало меньше или равно концу
+            if (start > end) {
+                document.getElementById('result').innerText = 'Начало диапазона должно быть меньше или равно концу.';
+                return;
+            }
+
+            // Подсчет суммы
+            for (let i = start; i <= end; i++) {
+                sum += i;
+            }
+
+            document.getElementById('result').innerText = `Сумма чисел от ${start} до ${end} равна ${sum}.`;
+        }
+    </script>
+</body>
+</html>

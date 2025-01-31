@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нахождение НОД</title>
+</head>
+<body>
+    <h1>Нахождение наибольшего общего делителя (НОД)</h1>
+    <button onclick="findGCD()">Найти НОД</button>
+    <p id="result"></p>
+
+    <script>
+        function findGCD() {
+            const num1 = parseInt(prompt("Введите первое число:"));
+            const num2 = parseInt(prompt("Введите второе число:"));
+
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById("result").innerText = "Пожалуйста, введите корректные числа.";
+                return;
+            }
+
+            const gcd = calculateGCD(num1, num2);
+            document.getElementById("result").innerText = `Наибольший общий делитель: ${gcd}`;
+        }
+
+        function calculateGCD(a, b) {
+            while (b !== 0) {
+                let temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+    </script>
+</body>
+</html>
